@@ -7,7 +7,7 @@ class TemplateEngine:
     """
 
     def __init__(self):
-        # Pre-loaded templates
+      
         self.templates = {
             "student_leave": TemplateModel(
     name="student_leave",
@@ -633,7 +633,7 @@ class TemplateEngine:
         template = self.get_template(template_key)
         if not template:
             return "❌ Template not found"
-        # Ensure 'subject' exists in data to avoid missing placeholder
+       
         if 'subject' not in data:
             data['subject'] = ""
         return replace_placeholders(template.content, data)
@@ -642,7 +642,6 @@ class TemplateEngine:
         return [{"key": k, "title": v.title} for k, v in self.templates.items()]
 
 
-# Singleton instance
 engine_instance = TemplateEngine()
 def render_letter(template_key, data):
     return engine_instance.generate_letter(template_key, data)

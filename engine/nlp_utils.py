@@ -1,14 +1,10 @@
-# engine/nlp_utils.py
-# Utility functions for template analysis and placeholder detection
 
 import re
 import os
 from docx import Document
 
-# -----------------------------
-# Placeholder Extraction
-# -----------------------------
-PLACEHOLDER_PATTERN = r"\{\{(.*?)\}\}"  # double curly braces {{field}}
+
+PLACEHOLDER_PATTERN = r"\{\{(.*?)\}\}"  
 
 def extract_placeholders(template_text: str):
     """
@@ -29,9 +25,6 @@ def replace_placeholders(template_text: str, values: dict):
     return re.sub(PLACEHOLDER_PATTERN, replacer, template_text)
 
 
-# -----------------------------
-# Load Template Text (.txt or .docx)
-# -----------------------------
 def load_template_text(file_path):
     """
     Loads text from a .txt or .docx template file.
@@ -53,9 +46,6 @@ def load_template_text(file_path):
         raise ValueError("Unsupported file type: " + file_path)
 
 
-# -----------------------------
-# OPTIONAL: spaCy NLP Analysis
-# -----------------------------
 try:
     import spacy
     nlp = spacy.load("en_core_web_sm")
@@ -73,7 +63,7 @@ try:
         }
 
 except Exception:
-    # spaCy not installed → skip advanced NLP
+    
     def analyze_text(text: str):
         return {
             "entities": [],
@@ -81,9 +71,7 @@ except Exception:
         }
 
 
-# -----------------------------
-# Test Run
-# -----------------------------
+
 if __name__ == "__main__":
     sample = "Hello {{name}}, your department is {{department}}"
     print("Placeholders:", extract_placeholders(sample))

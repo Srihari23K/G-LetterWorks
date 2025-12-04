@@ -7,9 +7,6 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.pagesizes import A4
 import os
 
-# -----------------------------
-# Initialize Flask
-# -----------------------------
 app = Flask(__name__)
 db_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance')
 os.makedirs(db_dir, exist_ok=True)
@@ -17,21 +14,13 @@ db_path = os.path.join(db_dir, 'app.db')
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Initialize DB
 db.init_app(app)
 
-# Initialize Template Engine
 engine = TemplateEngine()
 
-# -----------------------------
-# Create DB tables if not exist
-# -----------------------------
 with app.app_context():
     db.create_all()
 
-# -----------------------------
-# Routes
-# -----------------------------
 
 @app.route("/")
 def index():
@@ -48,7 +37,7 @@ def editor(template_key):
     placeholders = engine.get_placeholders(template_key)
 
     if request.method == "POST":
-        # Collect user input for all placeholders
+       
         data = {field: request.form.get(field, "") for field in placeholders}
         letter = engine.generate_letter(template_key, data)
         return render_template("result.html", letter=letter)
@@ -82,13 +71,13 @@ def download_pdf():
     styles = getSampleStyleSheet()
     story = []
 
-    # Split letter into paragraphs by double newlines
+   
     paragraphs = letter_text.split("\n\n")
     for para in paragraphs:
-        # Replace single newlines with <br/> for line breaks
+  
         para = para.replace("\n", "<br/>")
         story.append(Paragraph(para, styles['Normal']))
-        story.append(Spacer(1, 12))  # Space between paragraphs
+        story.append(Spacer(1, 12))  
 
     pdf.build(story)
 
@@ -99,8 +88,6 @@ def download_pdf():
     return response
 
 
-# -----------------------------
-# Run the App
-# -----------------------------
+
 if __name__ == "__main__":
     app.run(debug=True)

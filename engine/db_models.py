@@ -1,12 +1,7 @@
-# engine/db_models.py
 from flask_sqlalchemy import SQLAlchemy
 
-# Initialize SQLAlchemy (to be linked with Flask app)
 db = SQLAlchemy()
 
-# -----------------------------
-# Template Model
-# -----------------------------
 class TemplateModel(db.Model):
     __tablename__ = "templates"
 
@@ -20,10 +15,6 @@ class TemplateModel(db.Model):
     def __repr__(self):
         return f"<Template {self.name}>"
 
-
-# -----------------------------
-# Field Model
-# -----------------------------
 class FieldModel(db.Model):
     __tablename__ = "fields"
 
