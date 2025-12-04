@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Available Letter Templates</h2>
+
+{% if templates %}
+    <table>
+        <thead>
+            <tr>
+                <th>Template Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for template in templates %}
+            <tr>
+                <td>{{ template.title }}</td>
+                <td>
+                    <a href="{{ url_for('editor', template_key=template.key) }}">Use Template</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No templates available.</p>
+{% endif %}
+
+{% endblock %}

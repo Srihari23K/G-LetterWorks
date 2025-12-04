@@ -1,0 +1,12 @@
+content=(
+                    "To\n{{greeting}},\nDepartment of {{department}},\n\n"
+                    "{{College_Name}}\n\n"
+                    "Respected Sir/Madam,\n\n"
+                    "Subject: {{Subject}}\n\n"
+                    "My name is {{name}}, studying {{year}} Year CSE – {{section}} with Roll No: {{roll_number}}. I am writing this letter to inform you that I am currently unwell and unable to attend classes. Due to my sickness, I kindly request you to grant me leave for today..\n\n"
+                    "I assure you that I will catch up on all the missed lessons and assignments once I recover. I would be grateful for your understanding and support during this time.\n\n"
+                    "Thanking you,\n"
+                    "Yours faithfully,\n"
+                    "{{name}},\n"
+                    "{{roll_number}}\n"
+                )

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ template.title }}</h2>
+
+<form action="" method="POST" class="form-container">
+
+    {% for field in placeholders %}
+    <div class="form-group">
+        <label>{{ field | capitalize }}</label>
+        <input type="text" name="{{ field }}" required>
+    </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">Generate Letter</button>
+</form>
+
+<p style="margin-top: 15px;">
+    <a href="{{ url_for('index') }}">← Back to Templates</a>
+</p>
+
+{% endblock %}
