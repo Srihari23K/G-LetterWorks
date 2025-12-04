@@ -2,3 +2,5 @@ Flask
 Flask-SQLAlchemy
 python-docx
 reportlab
+gunicorn
+python-dotenv
