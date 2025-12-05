@@ -6,6 +6,8 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.pagesizes import A4
 import os
+from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
 db_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance')
